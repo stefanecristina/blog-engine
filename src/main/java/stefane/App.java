@@ -7,7 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class App {
 
   public static void main(String[] args) {
-    //TODO CRIAR XURUVIS
+    // TODO Criar xuruvis
     SpringApplication.run(App.class, args);
   }
 
