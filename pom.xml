@@ -10,15 +10,16 @@
 	<version>1.0</version>
 
 	<properties>
-		<jdk.version>1.8</jdk.version>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<main.class>${project.groupId}.App</main.class>
-		<output.directory>RELEASE/</output.directory>
-		<spring-boot.version>2.2.4.RELEASE</spring-boot.version>
-		<webjars-locator.version>0.38</webjars-locator.version>
-		<maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
-		<maven-clean-plugin.version>3.1.0</maven-clean-plugin.version>
-	</properties>
+    <jdk.version>1.8</jdk.version>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <main.class>${project.groupId}.Application</main.class>
+    <spring-boot.version>2.3.1.RELEASE</spring-boot.version>
+    <webjars-locator.version>0.40</webjars-locator.version>
+    <angularjs.version>1.8.0</angularjs.version>
+    <bootstrap.version>4.5.0</bootstrap.version>
+    <jquery.version>3.5.1</jquery.version>
+    <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
+  </properties>
 
 	<dependencyManagement>
 		<dependencies>
@@ -52,7 +53,7 @@
 
 	<build>
 
-		<finalName>../${output.directory}${project.artifactId}-${project.version}</finalName>
+		<finalName>${project.artifactId}</finalName>
 		<sourceDirectory>src/main/java</sourceDirectory>
 
 		<resources>
@@ -93,37 +94,6 @@
 				</configuration>
 			</plugin>
 
-			<plugin>
-				<artifactId>maven-clean-plugin</artifactId>
-				<version>${maven-clean-plugin.version}</version>
-				<configuration>
-					<followSymlinks>false</followSymlinks>
-					<filesets>
-						<fileset>
-							<directory>${output.directory}</directory>
-							<includes>
-								<include>*.jar.original</include>
-							</includes>
-						</fileset>
-						<fileset>
-							<directory>${basedir}/</directory>
-							<includes>
-								<include>*.log</include>
-							</includes>
-						</fileset>
-					</filesets>
-				</configuration>
-				<executions>
-					<execution>
-						<id>delete-original-jar</id>
-						<phase>package</phase>
-						<goals>
-							<goal>clean</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
-
 		</plugins>
 
 	</build>
@@ -140,7 +110,25 @@
 			<artifactId>webjars-locator</artifactId>
 			<version>${webjars-locator.version}</version>
 		</dependency>
-	
+
+		<dependency>
+      <groupId>org.webjars</groupId>
+      <artifactId>angularjs</artifactId>
+      <version>${angularjs.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.webjars</groupId>
+      <artifactId>bootstrap</artifactId>
+      <version>${bootstrap.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.webjars</groupId>
+      <artifactId>jquery</artifactId>
+      <version>${jquery.version}</version>
+    </dependency>
+
 	</dependencies>
 
 </project>
