@@ -1,4 +1,4 @@
-package stefane;
+package blog;
 
 @org.springframework.boot.autoconfigure.SpringBootApplication
 public class Application

@@ -4,21 +4,90 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>blog-engine</title>
+    <title>Blog Engine</title>
     <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
     <link href="webjars/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <style type="text/css">
       .application {
-        margin-top: 64px;
+        padding-top: 56px;
       }
     </style>
   </head>
 
-  <body class="container">
-    <div ng-app="blogApp" ng-controller="blogController" class="application">
-      <h1>{{ teste }}</h1>
-    </div>
-  </body>
+  <body ng-app="blogApp" ng-controller="blogController" class="application">
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="#">{{ blogName }}</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse"
+          data-target="#navbarResponsive" aria-controls="navbarResponsive"
+          aria-expanded="false" aria-label="Navega&ccedil;&atilde;o">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item active"><a class="nav-link" href="#">Home<span class="sr-only">(atual)</span></a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Sobre</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Contato</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container"><div class="row">
+
+      <div class="col-md-4">
+
+        <div class="card my-4">
+          <h5 class="card-header">Pesquisa</h5>
+          <div class="card-body">
+            <div class="input-group">
+              <input type="text" class="form-control" placeholder="Procurar por...">
+              <span class="input-group-append">
+                <button class="btn btn-secondary" type="button">Buscar</button>
+              </span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="col-md-8" style="margin-top: 24px;">
+
+        <div class="card mb-4" ng-repeat="post in posts">
+          <img class="card-img-top" src="{{ post.img.url }}" alt="{{ post.img.alt }}">
+          <div class="card-body">
+            <h2 class="card-title">{{ post.title }}</h2>
+            <p class="card-text">{{ post.intro }}</p>
+            <a href="#" class="btn btn-primary">Saiba mais &rarr;</a>
+          </div>
+          <div class="card-footer text-muted">
+            Publicado em {{ post.dateTime }} por
+            <a href="{{ post.author.profileUrl }}" target="_blank">{{ post.author.name }}</a>
+          </div>
+        </div>
+
+        <ul class="pagination justify-content-center mb-4">
+          <li class="page-item">
+            <a class="page-link" href="#">&larr; Older</a>
+          </li>
+          <li class="page-item disabled">
+            <a class="page-link" href="#">Newer &rarr;</a>
+          </li>
+        </ul>
+
+      </div>
+
+    </div></div>
+
+    <footer class="py-3 bg-dark">
+      <div class="container">
+        <p class="m-0 text-center text-white">Copyright &copy; Your Website
+          2020</p>
+      </div>
+    </footer>
+
+</body>
 
   <script src="webjars/jquery/jquery.min.js"></script>
   <script src="webjars/bootstrap/js/bootstrap.min.js"></script>
@@ -26,7 +95,36 @@
   <script type="text/javascript">
 
     angular.module('blogApp', []).controller('blogController', function ($scope) {
-      $scope.teste = 'Oi amor, eu amo vc!';
+      $scope.blogName = 'Blog Caralhudo';
+      $scope.posts = [
+        {
+          'img': {
+            'url': '/images/wizard.jpg',
+            'alt': 'Arcanista'
+          },
+          'title': 'Arcanistas s\u00e3o fodas',
+          'intro': 'Desta maneira, o entendimento das metas propostas ainda n\u00e3o demonstrou convincentemente que vai participar na mudan\u00e7a das dire\u00e7\u00f5es preferenciais no sentido do progresso.',
+          'dateTime': '28 de Setembro de 2020 \u00e0s 21h32',
+          'author': {
+            'name': 'Maia',
+            'profileUrl': 'https://fb.com/lipemaia'
+          }
+        },
+        {
+          'img': {
+            'url': '/images/necro.jpg',
+            'alt': 'Necromante'
+          },
+          'title': 'Necromantes também s\u00e3o fodas',
+          'intro': 'Ainda assim, existem dúvidas a respeito de como o fenômeno da Internet garante a contribuição de um grupo importante na determinação dos índices pretendidos.',
+          'dateTime': '27 de Setembro de 2020 \u00e0s 11h55',
+          'author': {
+            'name': 'Maia',
+            'profileUrl': 'https://fb.com/lipemaia'
+          }
+        },
+      ];
+
     })
 
   </script>
