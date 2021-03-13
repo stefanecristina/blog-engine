@@ -4,22 +4,22 @@
 						http://maven.apache.org/maven-v4_0_0.xsd">
 
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>stefane</groupId>
+	<groupId>blog</groupId>
 	<artifactId>blog-engine</artifactId>
 	<packaging>jar</packaging>
 	<version>1.0</version>
 
 	<properties>
-    <jdk.version>1.8</jdk.version>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <main.class>${project.groupId}.Application</main.class>
-    <spring-boot.version>2.3.1.RELEASE</spring-boot.version>
-    <webjars-locator.version>0.40</webjars-locator.version>
-    <angularjs.version>1.8.0</angularjs.version>
-    <bootstrap.version>4.5.0</bootstrap.version>
-    <jquery.version>3.5.1</jquery.version>
-    <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
-  </properties>
+		<jdk.version>1.8</jdk.version>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<main.class>${project.groupId}.Application</main.class>
+		<spring-boot.version>2.3.1.RELEASE</spring-boot.version>
+		<webjars-locator.version>0.40</webjars-locator.version>
+		<angularjs.version>1.8.0</angularjs.version>
+		<bootstrap.version>4.5.0</bootstrap.version>
+		<jquery.version>3.5.1</jquery.version>
+		<maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
+	</properties>
 
 	<dependencyManagement>
 		<dependencies>
@@ -112,22 +112,22 @@
 		</dependency>
 
 		<dependency>
-      <groupId>org.webjars</groupId>
-      <artifactId>angularjs</artifactId>
-      <version>${angularjs.version}</version>
-    </dependency>
+			<groupId>org.webjars</groupId>
+			<artifactId>angularjs</artifactId>
+			<version>${angularjs.version}</version>
+		</dependency>
 
-    <dependency>
-      <groupId>org.webjars</groupId>
-      <artifactId>bootstrap</artifactId>
-      <version>${bootstrap.version}</version>
-    </dependency>
+		<dependency>
+			<groupId>org.webjars</groupId>
+			<artifactId>bootstrap</artifactId>
+			<version>${bootstrap.version}</version>
+		</dependency>
 
-    <dependency>
-      <groupId>org.webjars</groupId>
-      <artifactId>jquery</artifactId>
-      <version>${jquery.version}</version>
-    </dependency>
+		<dependency>
+			<groupId>org.webjars</groupId>
+			<artifactId>jquery</artifactId>
+			<version>${jquery.version}</version>
+		</dependency>
 
 	</dependencies>
 
