@@ -1,15 +1,12 @@
 package blog.model;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public class Author {
-
-  public Author() {
-
-  }
-
-  public Author(String name, String profileUrl) {
-    this.name = name;
-    this.profileUrl = profileUrl;
-  }
 
   private String name;
 
@@ -29,6 +26,18 @@ public class Author {
 
   public void setProfileUrl(String profileUrl) {
     this.profileUrl = profileUrl;
+  }
+
+  @Id
+  @GeneratedValue(strategy = GenerationType.AUTO)
+  private Long idAuthor;
+
+  public Long getIdAuthor() {
+    return idAuthor;
+  }
+
+  public void setIdAuthor(Long idAuthor) {
+    this.idAuthor = idAuthor;
   }
 
 }

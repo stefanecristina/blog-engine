@@ -2,9 +2,29 @@ package blog.model;
 
 import java.time.LocalDateTime;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
+
 import com.fasterxml.jackson.annotation.JsonFormat;
 
+@Entity
 public class Post {
+
+  @Id
+  @GeneratedValue(strategy = GenerationType.AUTO)
+  private Long idPost;
+
+  public Long getIdPost() {
+    return idPost;
+  }
+
+  public void setIdPost(Long idPost) {
+    this.idPost = idPost;
+  }
 
   private String title;
 
@@ -26,6 +46,7 @@ public class Post {
     this.intro = intro;
   }
 
+  @OneToOne
   private Image img;
 
   public Image getImg() {
@@ -36,6 +57,7 @@ public class Post {
     this.img = img;
   }
 
+  @ManyToOne
   private Author author;
 
   public Author getAuthor() {

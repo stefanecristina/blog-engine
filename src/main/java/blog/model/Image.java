@@ -1,13 +1,12 @@
 package blog.model;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public class Image {
-
-  public Image() { }
-
-  public Image(String url, String alt) {
-    this.url = url;
-    this.alt = alt;
-  }
 
   private String url;
 
@@ -27,6 +26,18 @@ public class Image {
 
   public void setAlt(String alt) {
     this.alt = alt;
+  }
+
+  @Id
+  @GeneratedValue(strategy = GenerationType.AUTO)
+  private Long idImage;
+
+  public Long getIdImage() {
+    return idImage;
+  }
+
+  public void setIdImage(Long idImage) {
+    this.idImage = idImage;
   }
 
 }

@@ -1,5 +1,6 @@
 package blog;
 
+@org.springframework.data.jpa.repository.config.EnableJpaRepositories
 @org.springframework.boot.autoconfigure.SpringBootApplication
 public class Application
     implements org.springframework.web.servlet.config.annotation.WebMvcConfigurer {

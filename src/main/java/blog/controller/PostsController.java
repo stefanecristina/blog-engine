@@ -19,7 +19,7 @@ public class PostsController {
 
   @GetMapping
   public List<Post> listPosts() {
-    List<Post> posts = postRepository.listAll();
+    List<Post> posts = postRepository.findAll();
     return posts;
   }
 
