@@ -10,4 +10,5 @@ public class Application
       org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry registry) {
     registry.addResourceHandler("/**").addResourceLocations("classpath:/static/");
   }
+
 }

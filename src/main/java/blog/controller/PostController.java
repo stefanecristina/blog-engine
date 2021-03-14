@@ -1,9 +1,8 @@
 package blog.controller;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -13,16 +12,16 @@ import blog.repository.PostRepository;
 
 @RestController
 @ResponseBody
-@RequestMapping("/posts")
-public class PostsController {
+@RequestMapping("/post")
+public class PostController {
 
   @Autowired
   private PostRepository postRepository;
 
-  @GetMapping
-  public List<Post> listPosts() {
-    List<Post> posts = postRepository.findAll();
-    return posts;
+  @PostMapping
+  public Post save(@RequestBody Post post) {
+    post = this.postRepository.save(post);
+    return post;
   }
 
 }
