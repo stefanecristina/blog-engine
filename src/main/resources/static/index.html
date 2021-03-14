@@ -94,36 +94,14 @@
   <script src="webjars/angularjs/angular.min.js"></script>
   <script type="text/javascript">
 
-    angular.module('blogApp', []).controller('blogController', function ($scope) {
+    angular.module('blogApp', []).controller('blogController', function ($scope, $http) {
       $scope.blogName = 'Blog Caralhudo';
-      $scope.posts = [
-        {
-          'img': {
-            'url': '/images/wizard.jpg',
-            'alt': 'Arcanista'
-          },
-          'title': 'Arcanistas s\u00e3o fodas',
-          'intro': 'Desta maneira, o entendimento das metas propostas ainda n\u00e3o demonstrou convincentemente que vai participar na mudan\u00e7a das dire\u00e7\u00f5es preferenciais no sentido do progresso.',
-          'dateTime': '28 de Setembro de 2020 \u00e0s 21h32',
-          'author': {
-            'name': 'Maia',
-            'profileUrl': 'https://fb.com/lipemaia'
-          }
-        },
-        {
-          'img': {
-            'url': '/images/necro.jpg',
-            'alt': 'Necromante'
-          },
-          'title': 'Necromantes tamb\u00e9m s\u00e3o fodas',
-          'intro': 'Ainda assim, existem d\u00favidas a respeito de como o fen\u00f4meno da Internet garante a contribui\u00e7\u00e3o de um grupo importante na determina\u00e7\u00e3o dos \u00edndices pretendidos.',
-          'dateTime': '27 de Setembro de 2020 \u00e0s 11h55',
-          'author': {
-            'name': 'Maia',
-            'profileUrl': 'https://fb.com/lipemaia'
-          }
-        },
-      ];
+
+      $http.get("/posts").then(function(response){
+    	  $scope.posts = response.data;
+      });
+
+
 
     })
 
