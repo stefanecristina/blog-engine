@@ -113,7 +113,6 @@
       $http.get('/post/' + idPost).then(function(response) {
         $scope.selectedPost = response.data;
       }, function(errorResp) {
-        console.log(errorResp)
         $scope.selectedPost = {
           title: 'Erro!',
           intro: 'Ocorreu um erro, segue:',
