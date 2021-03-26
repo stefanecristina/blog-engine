@@ -2,6 +2,16 @@ package blog.controller.request;
 
 public class PostRequest {
 
+  private Long idPost;
+
+  public Long getIdPost() {
+    return idPost;
+  }
+
+  public void setIdPost(Long idPost) {
+    this.idPost = idPost;
+  }
+
   private String title;
 
   public String getTitle() {

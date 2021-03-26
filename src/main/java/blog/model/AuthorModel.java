@@ -25,7 +25,7 @@ public class AuthorModel {
     this.name = name;
   }
 
-  @Column(nullable = false)
+  @Column(nullable = false, length = 128)
   private String profileUrl;
 
   public String getProfileUrl() {
@@ -36,20 +36,30 @@ public class AuthorModel {
     this.profileUrl = profileUrl;
   }
 
-  @Lob
-  private Byte[] profileImage;
+  @Column(nullable = false, length = 500)
+  private String bio;
 
-  public Byte[] getProfileImage() {
+  public String getBio() {
+    return bio;
+  }
+
+  public void setBio(String bio) {
+    this.bio = bio;
+  }
+
+  @Lob
+  @JsonIgnore
+  private byte[] profileImage;
+
+  public byte[] getProfileImage() {
     return profileImage;
   }
 
-  public void setProfileImage(Byte[] profileImage) {
+  public void setProfileImage(byte[] profileImage) {
     this.profileImage = profileImage;
   }
 
-  @JsonIgnore
-  @OneToMany
-  @OrderColumn
+  @OneToMany @OrderColumn @JsonIgnore
   private PostModel[] posts;
 
   public PostModel[] getPosts() {
