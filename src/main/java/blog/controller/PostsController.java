@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import blog.model.Post;
+import blog.model.PostModel;
 import blog.repository.PostRepository;
 
 @RestController
@@ -20,9 +20,8 @@ public class PostsController {
   private PostRepository postRepository;
 
   @GetMapping
-  public List<Post> listPosts() {
-    List<Post> posts = postRepository.findAll();
-    return posts;
+  public List<PostModel> listPosts() {
+    return this.postRepository.findAll();
   }
 
 }

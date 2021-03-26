@@ -2,8 +2,8 @@ package blog.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import blog.model.Author;
+import blog.model.AuthorModel;
 
-public interface AuthorRepository extends JpaRepository<Author, Long> {
+public interface AuthorRepository extends JpaRepository<AuthorModel, Long> {
 
 }
