@@ -2,17 +2,73 @@ package blog.model;
 
 import java.time.LocalDateTime;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 @Entity
-public class Post {
+public class PostModel {
+
+  @Column(unique = true, nullable = false, length = 100)
+  private String title;
+
+  public String getTitle() {
+    return title;
+  }
+
+  public void setTitle(String title) {
+    this.title = title;
+  }
+
+  @Column(unique = true, nullable = false, length = 250)
+  private String intro;
+
+  public String getIntro() {
+    return intro;
+  }
+
+  public void setIntro(String intro) {
+    this.intro = intro;
+  }
+
+  @ManyToOne
+  private AuthorModel author;
+
+  public AuthorModel getAuthor() {
+    return author;
+  }
+
+  public void setAuthor(AuthorModel author) {
+    this.author = author;
+  }
+
+  @Column(insertable = true, updatable = false)
+  @JsonFormat(pattern = "dd/MM/yyyy HH:mm")
+  private LocalDateTime dateTime;
+
+  public LocalDateTime getDateTime() {
+    return dateTime;
+  }
+
+  public void setDateTime(LocalDateTime dateTime) {
+    this.dateTime = dateTime;
+  }
+
+  @Column(nullable = false)
+  private String content;
+
+  public String getContent() {
+    return content;
+  }
+
+  public void setContent(String content) {
+    this.content = content;
+  }
 
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
@@ -24,59 +80,6 @@ public class Post {
 
   public void setIdPost(Long idPost) {
     this.idPost = idPost;
-  }
-
-  private String title;
-
-  public String getTitle() {
-    return title;
-  }
-
-  public void setTitle(String title) {
-    this.title = title;
-  }
-
-  private String intro;
-
-  public String getIntro() {
-    return intro;
-  }
-
-  public void setIntro(String intro) {
-    this.intro = intro;
-  }
-
-  @OneToOne
-  private Image img;
-
-  public Image getImg() {
-    return img;
-  }
-
-  public void setImg(Image img) {
-    this.img = img;
-  }
-
-  @ManyToOne
-  private Author author;
-
-  public Author getAuthor() {
-    return author;
-  }
-
-  public void setAuthor(Author author) {
-    this.author = author;
-  }
-
-  @JsonFormat(pattern = "dd/MM/yyyy HH:mm")
-  private LocalDateTime dateTime;
-
-  public LocalDateTime getDateTime() {
-    return dateTime;
-  }
-
-  public void setDateTime(LocalDateTime dateTime) {
-    this.dateTime = dateTime;
   }
 
 }
