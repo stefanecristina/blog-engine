@@ -63,18 +63,19 @@
       <div class="col-md-8" style="margin-top: 24px;">
 
         <div class="card mb-4" ng-repeat="post in posts">
-          <img class="card-img-top" src="{{ post.img.url }}"
-            alt="{{ post.img.alt }}">
           <div class="card-body">
             <h2 class="card-title">{{ post.title }}</h2>
             <p class="card-text">{{ post.intro }}</p>
-            <a href="#" class="btn btn-primary">Saiba mais &rarr;</a>
           </div>
-          <div class="card-footer text-muted">
-            Publicado em {{ post.dateTime }} por
-              <a href="{{ post.author.profileUrl }}" target="_blank">
-                {{ post.author.name }}
-              </a>
+          <div class="card-footer">
+            <div class="row d-flex align-items-end">
+              <div class="col-sm-8">
+                Publicado em {{ post.dateTime }} por <a href="{{ post.author.profileUrl }}" target="_blank">{{ post.author.name }}</a>
+              </div>
+              <div class="col-sm-4">
+                <a href="#" class="btn btn-primary btn-sm float-right">Saiba mais</a>
+              </div>
+            </div>
           </div>
         </div>
 
