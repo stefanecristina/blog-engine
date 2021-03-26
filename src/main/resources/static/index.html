@@ -45,19 +45,6 @@
 
       <div class="col-md-4">
 
-        <div class="card my-4">
-          <h5 class="card-header">Pesquisa</h5>
-          <div class="card-body">
-            <div class="input-group">
-              <input type="text" class="form-control"
-                placeholder="Procurar por..."> <span
-                class="input-group-append">
-                <button class="btn btn-primary btn-icon btn-round" type="button">Buscar</button>
-              </span>
-            </div>
-          </div>
-        </div>
-
       </div>
 
       <div class="col-md-8" style="margin-top: 24px;">
@@ -73,7 +60,10 @@
                 Publicado em {{ post.dateTime }} por <a href="{{ post.author.profileUrl }}" target="_blank">{{ post.author.name }}</a>
               </div>
               <div class="col-sm-4">
-                <a href="#" class="btn btn-primary btn-sm float-right">Saiba mais</a>
+                <a href="#" class="btn btn-primary btn-sm float-right"
+                    ng-click="tellMeMoreAbout(post.idPost)" data-toggle="modal" data-target="#postModal">
+                  Saiba mais
+                </a>
               </div>
             </div>
           </div>
@@ -91,49 +81,22 @@
     </div>
   </div>
 
-  <footer class="footer">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-3">
-          <h1 class="title">Xuruvis</h1>
+  <div class="modal fade" id="postModal" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-scrollable">
+      <div class="modal-content" >
+        <div class="modal-header">
+          <h5 class="modal-title">{{ selectedPost.title }}</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+            <span aria-hidden="true">&times;</span>
+          </button>
         </div>
-        <div class="col-md-3">
-          <ul class="nav">
-            <li class="nav-item"><a href="./index.html" class="nav-link">Home </a></li>
-            <li class="nav-item"><a href="./examples/landing-page.html" class="nav-link"> Landing </a></li>
-            <li class="nav-item"><a href="./examples/register-page.html" class="nav-link"> Register </a></li>
-            <li class="nav-item"><a href="./examples/profile-page.html" class="nav-link"> Profile </a></li>
-          </ul>
-        </div>
-        <div class="col-md-3">
-          <ul class="nav">
-            <li class="nav-item"><a href="https://creative-tim.com/contact-us" class="nav-link">Contact Us </a></li>
-            <li class="nav-item"><a href="https://creative-tim.com/about-us" class="nav-link">About Us </a></li>
-            <li class="nav-item"><a href="https://creative-tim.com/blog" class="nav-link"> Blog </a></li>
-            <li class="nav-item"><a href="https://opensource.org/licenses/MIT" class="nav-link">License </a></li>
-          </ul>
-        </div>
-        <div class="col-md-3">
-          <h3 class="title">Follow us:</h3>
-          <div class="btn-wrapper profile">
-            <a target="_blank" href="https://twitter.com/creativetim"
-              class="btn btn-icon btn-neutral btn-round btn-simple"
-              data-toggle="tooltip" data-original-title="Follow us"> <i
-              class="fab fa-twitter"></i>
-            </a> <a target="_blank" href="https://www.facebook.com/creativetim"
-              class="btn btn-icon btn-neutral btn-round btn-simple"
-              data-toggle="tooltip" data-original-title="Like us"> <i
-              class="fab fa-facebook-square"></i>
-            </a> <a target="_blank" href="https://dribbble.com/creativetim"
-              class="btn btn-icon btn-neutral  btn-round btn-simple"
-              data-toggle="tooltip" data-original-title="Follow us"> <i
-              class="fab fa-dribbble"></i>
-            </a>
-          </div>
+        <div class="modal-body">{{ selectedPost.intro }}<hr>{{ selectedPost.content }}</div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary " data-dismiss="modal">Fechar</button>
         </div>
       </div>
     </div>
-  </footer>
+  </div>
 
 </body>
 
@@ -161,6 +124,13 @@
     $http.get("/post").then(function(response) {
       $scope.posts = response.data;
     });
+
+    $scope.tellMeMoreAbout = function(idPost) {
+      $scope.selectedPost = null;
+      $http.get("/post/" + idPost).then(function(response) {
+        $scope.selectedPost = response.data;
+      });
+    };
 
   })
 
