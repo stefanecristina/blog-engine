@@ -4,11 +4,16 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
 						http://maven.apache.org/maven-v4_0_0.xsd">
 
-<modelVersion>4.0.0</modelVersion>
+  <modelVersion>4.0.0</modelVersion>
   <groupId>blog</groupId>
   <artifactId>blog-engine</artifactId>
   <packaging>jar</packaging>
   <version>1.0</version>
+
+  <name>Blog Engine</name>
+  <description>
+    Blog engine powered by Spring-Boot + AngularJS + Bootstrap.
+  </description>
 
   <properties>
     <jdk.version>1.8</jdk.version>
@@ -17,9 +22,10 @@
     <spring-boot.version>2.1.6.RELEASE</spring-boot.version>
     <swagger.version>2.9.2</swagger.version>
     <webjars-locator.version>0.40</webjars-locator.version>
-    <angularjs.version>1.8.0</angularjs.version>
-    <bootstrap.version>4.5.0</bootstrap.version>
-    <jquery.version>3.5.1</jquery.version>
+    <angularjs.version>1.8.2</angularjs.version>
+    <bootstrap.version>4.6.0</bootstrap.version>
+    <jquery.version>3.6.0</jquery.version>
+    <popper-js.version>2.5.4</popper-js.version>
     <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
   </properties>
 
@@ -173,6 +179,13 @@
       <artifactId>jquery</artifactId>
       <version>${jquery.version}</version>
     </dependency>
+
+    <dependency>
+      <groupId>org.webjars</groupId>
+      <artifactId>popper.js</artifactId>
+      <version>${popper-js.version}</version>
+    </dependency>
+
 
   </dependencies>
 

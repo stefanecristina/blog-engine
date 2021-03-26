@@ -9,6 +9,8 @@ import javax.persistence.Lob;
 import javax.persistence.OneToMany;
 import javax.persistence.OrderColumn;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class AuthorModel {
 
@@ -45,6 +47,7 @@ public class AuthorModel {
     this.profileImage = profileImage;
   }
 
+  @JsonIgnore
   @OneToMany
   @OrderColumn
   private PostModel[] posts;
