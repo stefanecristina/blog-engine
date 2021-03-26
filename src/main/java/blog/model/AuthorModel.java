@@ -14,7 +14,8 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @Entity
 public class AuthorModel {
 
-  @Column(unique = true, nullable = false, length = 50)
+  @Column(unique = true, nullable = false, length = 50,
+    insertable = true, updatable = false)
   private String name;
 
   public String getName() {

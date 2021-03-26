@@ -1,6 +1,7 @@
 package blog.controller;
 
 import java.time.LocalDateTime;
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -23,8 +24,7 @@ import blog.repository.PostRepository;
 import io.swagger.annotations.ApiOperation;
 
 @RestController @ResponseBody
-@RequestMapping(path = "/post",
-  produces = MediaType.APPLICATION_JSON_VALUE)
+@RequestMapping(path = "/post", produces = MediaType.APPLICATION_JSON_VALUE)
 public class PostController {
 
   @Autowired
@@ -34,9 +34,15 @@ public class PostController {
   private AuthorRepository authorRepository;
 
   @GetMapping
-  @ApiOperation(value = "List all posts without filter.")
+  @ApiOperation(value = "List all posts with given category.")
   public List<PostModel> listAllPosts() {
     return this.postRepository.findAll();
+  }
+
+  @GetMapping("/categories")
+  @ApiOperation(value = "List all posts categories.")
+  public List<String> categories() {
+    return Collections.emptyList();
   }
 
   @GetMapping("/{idPost}")
@@ -53,11 +59,16 @@ public class PostController {
 
   @PostMapping
   @ApiOperation(value = "Create or update post.")
-  public ResponseEntity<PostModel> newPost(@RequestBody PostRequest postReq) {
+  public ResponseEntity<PostModel> save(@RequestBody PostRequest postReq) {
+    if(postReq.getIdAuthor() == null ||
+        !this.authorRepository.existsById(postReq.getIdAuthor())) {
+      return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
+
     final PostModel newPost = new PostModel();
     newPost.setDateTime(LocalDateTime.now());
-
     newPost.setAuthor(this.authorRepository.findById(postReq.getIdAuthor()).get());
+
     newPost.setContent(postReq.getContent());
     newPost.setIntro(postReq.getIntro());
     newPost.setTitle(postReq.getTitle());

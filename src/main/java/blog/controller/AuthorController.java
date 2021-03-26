@@ -65,7 +65,7 @@ public class AuthorController {
 
   private AuthorModel getAuthorFromId(Long idAuthor) {
     Optional<AuthorModel> optAuthor = this.authorRepository.findById(idAuthor);
-    return !optAuthor.isPresent() ? optAuthor.get() : null;
+    return optAuthor.isPresent() ? optAuthor.get() : null;
   }
 
   @GetMapping(value = "/{idAuthor}/profile.png", produces = MediaType.IMAGE_PNG_VALUE)
