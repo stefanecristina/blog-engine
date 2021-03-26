@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import blog.controller.request.PostRequest;
-import blog.model.AuthorModel;
 import blog.model.PostModel;
 import blog.repository.AuthorRepository;
 import blog.repository.PostRepository;
@@ -27,14 +26,16 @@ public class PostController {
   private AuthorRepository authorRepository;
 
   @PostMapping
-  public ResponseEntity<Boolean> newPost(@RequestBody PostRequest postReq) {
+  public ResponseEntity<PostModel> newPost(@RequestBody PostRequest postReq) {
 
     final PostModel newPost = new PostModel();
     newPost.setAuthor(this.authorRepository.findById(postReq.getIdAuthor()).get());
 
+    //...
 
-
-    return new ResponseEntity<Boolean>(Boolean.TRUE, HttpStatus.CREATED);
+    return new ResponseEntity<PostModel>(
+      this.postRepository.save(newPost),
+      HttpStatus.CREATED);
   }
 
 }
