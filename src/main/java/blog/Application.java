@@ -9,6 +9,7 @@ public class Application
   public void addResourceHandlers(
       org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry registry) {
     registry.addResourceHandler("/**").addResourceLocations("classpath:/static/");
+    registry.addResourceHandler("swagger-ui.html").addResourceLocations("classpath:/META-INF/resources/");
   }
 
 }

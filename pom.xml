@@ -13,7 +13,8 @@
 		<jdk.version>1.8</jdk.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<main.class>${project.groupId}.Application</main.class>
-		<spring-boot.version>2.3.1.RELEASE</spring-boot.version>
+		<spring-boot.version>2.1.6.RELEASE</spring-boot.version>
+		<swagger.version>2.9.2</swagger.version>
 		<webjars-locator.version>0.40</webjars-locator.version>
 		<angularjs.version>1.8.0</angularjs.version>
 		<bootstrap.version>4.5.0</bootstrap.version>
@@ -118,6 +119,24 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-swagger2</artifactId>
+			<version>${swagger.version}</version>
+			<exclusions>
+				<exclusion>
+					<groupId>io.github.classgraph</groupId>
+					<artifactId>classgraph</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-swagger-ui</artifactId>
+			<version>${swagger.version}</version>
 		</dependency>
 
 		<dependency>
