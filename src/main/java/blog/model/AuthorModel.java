@@ -7,6 +7,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.OneToMany;
+import javax.persistence.OrderColumn;
 
 @Entity
 public class AuthorModel {
@@ -45,6 +46,7 @@ public class AuthorModel {
   }
 
   @OneToMany
+  @OrderColumn
   private PostModel[] posts;
 
   public PostModel[] getPosts() {
