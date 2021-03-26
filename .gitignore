@@ -1,9 +1,7 @@
 .settings/
-files/
+database/
 RELEASE/
 target/
 .classpath
 .project
-.idea/
-*.iml
 *.log
