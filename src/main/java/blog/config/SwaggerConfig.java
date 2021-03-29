@@ -34,10 +34,8 @@ public class SwaggerConfig {
         PostController.class.getPackage().getName()))
       .paths(PathSelectors.any()).build().apiInfo(
          new ApiInfoBuilder()
-           .title(this.name)
-           .version(this.version)
-           .description(this.description.trim())
-             .build());
+           .title(this.name).version(this.version)
+           .description(this.description.trim()).build());
   }
 
 }
