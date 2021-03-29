@@ -106,9 +106,9 @@
 
     $scope.tellMeMoreAbout = function(idPost) {
       $scope.selectedPost = {
-          title: 'Carregando...',
-          intro: 'Por favor, aguarde.'
-        };
+        title: 'Carregando...',
+        intro: 'Por favor, aguarde.'
+      };
       $http.get('/post/' + idPost).then(function(response) {
         $scope.selectedPost = response.data;
       }, function(errorResp) {
