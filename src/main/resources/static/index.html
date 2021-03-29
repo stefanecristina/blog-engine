@@ -64,7 +64,7 @@
   </div>
 
   <div class="modal fade" id="postModal" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg" role="document" style="transform: translate(0, 0%);">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document" style="transform: translate(0, 0%);">
       <div class="modal-content" >
         <div class="modal-header" style="padding-bottom: 20px;">
           <h3 class="modal-title">{{ selectedPost.title }}</h3>
@@ -106,9 +106,9 @@
 
     $scope.tellMeMoreAbout = function(idPost) {
       $scope.selectedPost = {
-        title: 'Carregando...',
-        intro: 'Por favor, aguarde.'
-      };
+          title: 'Carregando...',
+          intro: 'Por favor, aguarde.'
+        };
       $http.get('/post/' + idPost).then(function(response) {
         $scope.selectedPost = response.data;
       }, function(errorResp) {
