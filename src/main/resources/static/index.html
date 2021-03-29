@@ -109,7 +109,7 @@
 
   angular.module('blogApp', []).controller('blogController', function($scope, $http) {
 
-    $scope.blogIcon = 'controller';
+    $scope.blogIcon = 'double-right';
     $scope.blogName = 'Blog Caralhudo';
 
     $http.get('/post').then(function(response) {
