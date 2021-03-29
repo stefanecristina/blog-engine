@@ -68,6 +68,22 @@
       <resource>
         <directory>src/main/resources</directory>
         <filtering>true</filtering>
+        <excludes>
+          <exclude>**/*.eot</exclude>
+          <exclude>**/*.ttf</exclude>
+          <exclude>**/*.woff</exclude>
+          <exclude>**/*.woff2</exclude>
+        </excludes>
+      </resource>
+      <resource>
+        <directory>src/main/resources</directory>
+        <filtering>false</filtering>
+        <includes>
+          <include>**/*.eot</include>
+          <include>**/*.ttf</include>
+          <include>**/*.woff</include>
+          <include>**/*.woff2</include>
+        </includes>
       </resource>
     </resources>
 
