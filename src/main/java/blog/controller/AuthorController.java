@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -23,7 +22,7 @@ import blog.model.AuthorModel;
 import blog.repository.AuthorRepository;
 import io.swagger.annotations.ApiOperation;
 
-@RestController @ResponseBody
+@RestController
 @RequestMapping(value = "/author")
 public class AuthorController {
 
@@ -55,7 +54,7 @@ public class AuthorController {
       @RequestParam MultipartFile profileImage) throws IOException {
     Optional<AuthorModel> optAuthor = this.authorRepository.findById(idAuthor);
     if(!optAuthor.isPresent()) {
-      return new ResponseEntity<>(true, HttpStatus.NOT_FOUND);
+      return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
     AuthorModel author = optAuthor.get();
     author.setProfileImage(profileImage.getBytes());
@@ -72,7 +71,8 @@ public class AuthorController {
   @ApiOperation(value = "Get author's profile picture.")
   public ResponseEntity<byte[]> profileImage(@PathVariable Long idAuthor) {
     AuthorModel author = this.getAuthorFromId(idAuthor);
-    return author == null ? new ResponseEntity<>(HttpStatus.NOT_FOUND) :
+    return author == null || author.getProfileImage() == null ?
+      new ResponseEntity<>(HttpStatus.NOT_FOUND) :
       new ResponseEntity<>(author.getProfileImage(), HttpStatus.OK);
   }
 
