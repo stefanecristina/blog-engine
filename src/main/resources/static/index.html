@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="assets/css/blk-design-system.css?v=1.0.0">
   <style type="text/css">
     .application {
-      padding-top: 80px;
+      padding-top: 130px;
     }
   </style>
 </head>
@@ -39,6 +39,11 @@
   <div class="container">
     <div class="row">
 
+      <div class="col-md-3 text-center">
+        <a ng-repeat="category in categories" href="#" style="margin: 4px;" ng-click="selectCategory(category)"
+          class="badge badge-pill {{ category.isClicked ? 'badge-primary' : 'badge-default' }}">{{ category.id }}</a>
+      </div>
+
       <div class="col-md-9" style="margin-top: 24px;">
 
         <div class="card mb-4" ng-repeat="post in posts">
@@ -65,10 +70,7 @@
         </ul>
 
       </div>
-      <div class="col-md-3 text-center">
-        <a ng-repeat="category in categories" href="#" style="margin: 4px;" ng-click="selectCategory(category)"
-          class="badge badge-pill {{ category.isClicked ? 'badge-primary' : 'badge-default' }}">{{ category.id }}</a>
-      </div>
+
     </div>
   </div>
 
