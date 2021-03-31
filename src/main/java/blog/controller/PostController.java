@@ -1,7 +1,6 @@
 package blog.controller;
 
 import java.time.LocalDateTime;
-import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -41,7 +40,17 @@ public class PostController {
   @GetMapping("/categories")
   @ApiOperation(value = "List all posts categories.")
   public List<String> categories() {
-    return Collections.emptyList();
+    List<String> output = new java.util.ArrayList<String>();
+    output.add("primeiro");
+    output.add("segundo");
+    output.add("terceiro");
+    output.add("quarto");
+    output.add("quinto");
+    output.add("sexto");
+    output.add("sétimo");
+    output.add("oitavo");
+    output.add("nono");
+    return output;
   }
 
   @GetMapping("/{idPost}")

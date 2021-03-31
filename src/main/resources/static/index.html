@@ -65,11 +65,10 @@
         </ul>
 
       </div>
-
-      <div class="col-md-3">
-        <!-- ... -->
+      <div class="col-md-3 text-center">
+        <a ng-repeat="category in categories" href="#" style="margin: 4px;" ng-click="selectCategory(category)"
+          class="badge badge-pill {{ category.isClicked ? 'badge-primary' : 'badge-default' }}">{{ category.id }}</a>
       </div>
-
     </div>
   </div>
 
@@ -116,6 +115,16 @@
       $scope.posts = response.data;
     });
 
+    $http.get('/post/categories').then(function(response) {
+      $scope.categories = [];
+      response.data.forEach(function (c) {
+        $scope.categories.push({
+          id: c,
+          isClicked: false
+        });
+      });
+    });
+
     $scope.tellMeMoreAbout = function(idPost) {
       $scope.selectedPost = {
           title: 'Carregando...',
@@ -130,6 +139,10 @@
           content: errorResp
         };
       });
+    };
+
+    $scope.selectCategory = function(category) {
+      category.isClicked = !category.isClicked
     };
 
   })
