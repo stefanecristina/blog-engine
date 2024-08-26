@@ -20,7 +20,7 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <main.class>${project.groupId}.Application</main.class>
     <spring-boot.version>2.1.6.RELEASE</spring-boot.version>
-    <swagger.version>2.9.2</swagger.version>
+    <swagger.version>2.10.0</swagger.version>
     <webjars-locator.version>0.40</webjars-locator.version>
     <angularjs.version>1.8.2</angularjs.version>
     <bootstrap.version>4.6.0</bootstrap.version>
